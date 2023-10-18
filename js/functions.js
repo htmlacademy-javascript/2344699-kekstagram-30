@@ -18,3 +18,15 @@ const polindromeTest = function (string) {
 polindromeTest('Лёша на полке клопа нашёл');
 polindromeTest('Лёша на полке клопа нашёл1');
 polindromeTest('казак');
+
+const numbersFromString = function (string) {
+  const givenString = string.toString().replaceAll(' ', '');
+  let getNumber = '';
+  for (let i = 0; i <= givenString.length - 1; i++) {
+    if (!isNaN(givenString[i] * 1)) {
+      getNumber += givenString[i];
+    }
+  }
+  return parseInt(getNumber, 10);
+};
+numbersFromString('dgkjshlfgj    985 768 hkjhk   ');
