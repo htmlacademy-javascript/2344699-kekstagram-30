@@ -1,14 +1,20 @@
-// Функция для проверки длины строки. Она принимает строку, которую нужно проверить, и максимальную длину и возвращает true, если строка меньше или равна указанной длине, и false, если строка длиннее. Эта функция нам пригодится для валидации формы. Примеры использования функции:
-
-// // Cтрока короче 20 символов
-// имяФункции('проверяемая строка', 20); // true
-// // Длина строки ровно 18 символов
-// имяФункции('проверяемая строка', 18); // true
-// // Строка длиннее 10 символов
-// имяФункции('проверяемая строка', 10); // false
-
-
 const checkStringLenght = function (string, length) {
   return string.length <= length;
 };
+
 checkStringLenght('проверяемая строка', 230);
+
+const polindromeTest = function (string) {
+  const givenString = string.replaceAll(' ', '').toLowerCase();
+  let stringToCompare = '';
+
+  for (let i = givenString.length - 1; i >= 0; i--) {
+    stringToCompare += givenString[i];
+  }
+
+  return givenString === stringToCompare;
+};
+
+polindromeTest('Лёша на полке клопа нашёл');
+polindromeTest('Лёша на полке клопа нашёл1');
+polindromeTest('казак');
