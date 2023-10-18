@@ -1,8 +1,8 @@
-const checkStringLenght = function (string, length) {
+const checkStringLength = function (string, length) {
   return string.length <= length;
 };
 
-checkStringLenght('проверяемая строка', 230);
+checkStringLength('проверяемая строка', 230);
 
 const polindromeTest = function (string) {
   const givenString = string.replaceAll(' ', '').toLowerCase();
