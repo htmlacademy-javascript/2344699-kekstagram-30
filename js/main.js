@@ -49,29 +49,29 @@ const getRandomArrayElement = (elements) =>
 
 const getRandomMessages = () => getRandomArrayElement(MESSAGES);
 
-let incrementedId = 0;
-let incrementedUrl = 0;
+const getSerialNumber = () => {
+  let serialNumber = 0;
 
-const getId = () => {
-  incrementedId++;
-  return incrementedId;
+  return function () {
+    serialNumber++;
+    return serialNumber;
+  };
 };
 
-const getUrl = () => {
-  incrementedUrl++;
-  return incrementedUrl;
-};
+const incrementedIdObject = getSerialNumber();
+const incrementedUrl = getSerialNumber();
+const incrementedIdComment = getSerialNumber();
 
 const createComments = () => ({
-  id: getId(),
+  id: incrementedIdComment(),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: Array.from({ length: getRandomInteger(1, 2) }, getRandomMessages),
   name: getRandomArrayElement(NAMES),
 });
 
 const createObject = () => ({
-  id: getId(),
-  url: `photos/${getUrl()}.jpg`,
+  id: incrementedIdObject(),
+  url: `photos/${incrementedUrl()}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(15, 200),
   comments: Array.from(
