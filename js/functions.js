@@ -1,32 +1,17 @@
-const checkStringLength = function (string, length) {
-  return string.length <= length;
-};
 
-checkStringLength('проверяемая строка', 230);
+const isMeetingBeyondWorkday = (sw, ew, sm, md) => {
+  const startW = sw.split(':');
+  const endW = ew.split(':');
+  const startM = sm.split(':');
 
-const polindromeTest = function (string) {
-  const givenString = string.replaceAll(' ', '').toLowerCase();
-  let stringToCompare = '';
+  const swInMin = +startW[0] * 60 + +startW[1];
+  const ewInMin = +endW[0] * 60 + +endW[1];
+  const smInMin = +startM[0] * 60 + +startM[1];
+  const emInMin = smInMin + md;
 
-  for (let i = givenString.length - 1; i >= 0; i--) {
-    stringToCompare += givenString[i];
+  if(smInMin >= swInMin && emInMin <= ewInMin) {
+    return true;
   }
-
-  return givenString === stringToCompare;
+  return false;
 };
-
-polindromeTest('Лёша на полке клопа нашёл');
-polindromeTest('Лёша на полке клопа нашёл1');
-polindromeTest('казак');
-
-const numbersFromString = function (string) {
-  const givenString = string.toString().replaceAll(' ', '');
-  let getNumber = '';
-  for (let i = 0; i <= givenString.length - 1; i++) {
-    if (!isNaN(givenString[i] * 1)) {
-      getNumber += givenString[i];
-    }
-  }
-  return parseInt(getNumber, 10);
-};
-numbersFromString('dgkjshlfgj    985 768 hkjhk   ');
+window.console.log(isMeetingBeyondWorkday('8:00', '17:30', '08:00', 900));
